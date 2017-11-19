@@ -166,11 +166,14 @@ class MemN2N(object):
 
             self.A_1 = tf.Variable(A, name="A")
 
-            self.C = []
-
-            for hopn in range(self._hops):
-                with tf.variable_scope('hop_{}'.format(hopn)):
-                    self.C.append(tf.Variable(C, name="C"))
+            # layerwise implementation
+            self.C = tf.Variable(C, name="C")
+            # adjacent implementation
+            # self.C = []
+            #
+            # for hopn in range(self._hops):
+            #     with tf.variable_scope('hop_{}'.format(hopn)):
+            #         self.C.append(tf.Variable(C, name="C"))
 
             # Dont use projection for layerwise weight sharing
             # self.H = tf.Variable(self._init([self._embedding_size, self._embedding_size]), name="H")
@@ -178,7 +181,10 @@ class MemN2N(object):
             # Use final C as replacement for W
             # self.W = tf.Variable(self._init([self._embedding_size, self._vocab_size]), name="W")
 
-        self._nil_vars = set([self.A_1.name] + [x.name for x in self.C])
+        # layerwise implementation
+        self._nil_vars = set([self.A_1.name] + [self.C.name])
+        # adjacent implementation
+        # self._nil_vars = set([self.A_1.name] + [x.name for x in self.C])
 
     def _inference(self, stories, queries):
         with tf.variable_scope(self._name):
@@ -194,7 +200,10 @@ class MemN2N(object):
 
                 else:
                     with tf.variable_scope('hop_{}'.format(hopn - 1)):
-                        m_emb_A = tf.nn.embedding_lookup(self.C[hopn - 1], stories)
+                        # layerwise
+                        m_emb_A = tf.nn.embedding_lookup(self.C, stories)
+                        # adjacent
+                        # m_emb_A = tf.nn.embedding_lookup(self.C[hopn - 1], stories)
                         m_A = tf.reduce_sum(m_emb_A * self._encoding, 2)
 
                 # hack to get around no reduce_dot
@@ -206,7 +215,10 @@ class MemN2N(object):
 
                 probs_temp = tf.transpose(tf.expand_dims(probs, -1), [0, 2, 1])
                 with tf.variable_scope('hop_{}'.format(hopn)):
-                    m_emb_C = tf.nn.embedding_lookup(self.C[hopn], stories)
+                    # layerwise
+                    m_emb_C = tf.nn.embedding_lookup(self.C, stories)
+                    # adjacent
+                    # m_emb_C = tf.nn.embedding_lookup(self.C[hopn], stories)
                 m_C = tf.reduce_sum(m_emb_C * self._encoding, 2)
 
                 c_temp = tf.transpose(m_C, [0, 2, 1])
@@ -225,7 +237,10 @@ class MemN2N(object):
 
             # Use last C for output (transposed)
             with tf.variable_scope('hop_{}'.format(self._hops)):
-                return tf.matmul(u_k, tf.transpose(self.C[-1], [1,0]))
+                # layerwise
+                return tf.matmul(u_k, tf.transpose(self.C, [1, 0]))
+                # adjacent
+                # return tf.matmul(u_k, tf.transpose(self.C[-1], [1,0]))
 
     def batch_fit(self, stories, queries, answers, learning_rate):
         """Runs the training algorithm over the passed batch
