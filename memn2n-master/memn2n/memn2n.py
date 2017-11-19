@@ -176,7 +176,7 @@ class MemN2N(object):
             #         self.C.append(tf.Variable(C, name="C"))
 
             # Dont use projection for layerwise weight sharing
-            # self.H = tf.Variable(self._init([self._embedding_size, self._embedding_size]), name="H")
+            self.H = tf.Variable(self._init([self._embedding_size, self._embedding_size]), name="H")
 
             # Use final C as replacement for W
             # self.W = tf.Variable(self._init([self._embedding_size, self._vocab_size]), name="W")
@@ -225,9 +225,9 @@ class MemN2N(object):
                 o_k = tf.reduce_sum(c_temp * probs_temp, 2)
 
                 # Dont use projection layer for adj weight sharing
-                # u_k = tf.matmul(u[-1], self.H) + o_k
-
-                u_k = u[-1] + o_k
+                u_k = tf.matmul(u[-1], self.H) + o_k
+                # adjacent
+                # u_k = u[-1] + o_k
 
                 # nonlinearity
                 if self._nonlin:
