@@ -1,0 +1,640 @@
+Longest sentence length 12
+Longest story length 228
+Average story length 9
+Training Size 18000
+Validation Size 2000
+Testing Size 20000
+(18000, 50, 12) (2000, 50, 12) (20000, 50, 12)
+(18000, 12) (2000, 12) (20000, 12)
+(18000, 225) (2000, 225) (20000, 225)
+-----------------------
+Epoch 10
+Total Cost: 14783.5417188
+
+Task 1
+Training Accuracy = 0.972222222222
+Validation Accuracy = 0.98
+Testing Accuracy = 0.961
+
+Task 2
+Training Accuracy = 0.69
+Validation Accuracy = 0.67
+Testing Accuracy = 0.599
+
+Task 3
+Training Accuracy = 0.452222222222
+Validation Accuracy = 0.34
+Testing Accuracy = 0.361
+
+Task 4
+Training Accuracy = 0.832222222222
+Validation Accuracy = 0.72
+Testing Accuracy = 0.774
+
+Task 5
+Training Accuracy = 0.823333333333
+Validation Accuracy = 0.83
+Testing Accuracy = 0.771
+
+Task 6
+Training Accuracy = 0.907777777778
+Validation Accuracy = 0.88
+Testing Accuracy = 0.871
+
+Task 7
+Training Accuracy = 0.655555555556
+Validation Accuracy = 0.72
+Testing Accuracy = 0.63
+
+Task 8
+Training Accuracy = 0.57
+Validation Accuracy = 0.53
+Testing Accuracy = 0.57
+
+Task 9
+Training Accuracy = 0.855555555556
+Validation Accuracy = 0.83
+Testing Accuracy = 0.873
+
+Task 10
+Training Accuracy = 0.758888888889
+Validation Accuracy = 0.77
+Testing Accuracy = 0.722
+
+Task 11
+Training Accuracy = 0.892222222222
+Validation Accuracy = 0.85
+Testing Accuracy = 0.912
+
+Task 12
+Training Accuracy = 0.898888888889
+Validation Accuracy = 0.88
+Testing Accuracy = 0.901
+
+Task 13
+Training Accuracy = 0.927777777778
+Validation Accuracy = 0.94
+Testing Accuracy = 0.936
+
+Task 14
+Training Accuracy = 0.702222222222
+Validation Accuracy = 0.63
+Testing Accuracy = 0.613
+
+Task 15
+Training Accuracy = 0.425555555556
+Validation Accuracy = 0.46
+Testing Accuracy = 0.45
+
+Task 16
+Training Accuracy = 0.477777777778
+Validation Accuracy = 0.5
+Testing Accuracy = 0.491
+
+Task 17
+Training Accuracy = 0.614444444444
+Validation Accuracy = 0.61
+Testing Accuracy = 0.608
+
+Task 18
+Training Accuracy = 0.472222222222
+Validation Accuracy = 0.46
+Testing Accuracy = 0.501
+
+Task 19
+Training Accuracy = 0.103333333333
+Validation Accuracy = 0.13
+Testing Accuracy = 0.096
+
+Task 20
+Training Accuracy = 0.998888888889
+Validation Accuracy = 1.0
+Testing Accuracy = 0.998
+
+-----------------------
+-----------------------
+Epoch 20
+Total Cost: 10016.7390938
+
+Task 1
+Training Accuracy = 0.993333333333
+Validation Accuracy = 0.99
+Testing Accuracy = 0.978
+
+Task 2
+Training Accuracy = 0.775555555556
+Validation Accuracy = 0.72
+Testing Accuracy = 0.653
+
+Task 3
+Training Accuracy = 0.668888888889
+Validation Accuracy = 0.48
+Testing Accuracy = 0.453
+
+Task 4
+Training Accuracy = 0.916666666667
+Validation Accuracy = 0.88
+Testing Accuracy = 0.857
+
+Task 5
+Training Accuracy = 0.883333333333
+Validation Accuracy = 0.86
+Testing Accuracy = 0.8
+
+Task 6
+Training Accuracy = 0.928888888889
+Validation Accuracy = 0.93
+Testing Accuracy = 0.882
+
+Task 7
+Training Accuracy = 0.848888888889
+Validation Accuracy = 0.83
+Testing Accuracy = 0.822
+
+Task 8
+Training Accuracy = 0.846666666667
+Validation Accuracy = 0.81
+Testing Accuracy = 0.825
+
+Task 9
+Training Accuracy = 0.927777777778
+Validation Accuracy = 0.93
+Testing Accuracy = 0.912
+
+Task 10
+Training Accuracy = 0.877777777778
+Validation Accuracy = 0.77
+Testing Accuracy = 0.797
+
+Task 11
+Training Accuracy = 0.895555555556
+Validation Accuracy = 0.87
+Testing Accuracy = 0.91
+
+Task 12
+Training Accuracy = 0.952222222222
+Validation Accuracy = 0.94
+Testing Accuracy = 0.945
+
+Task 13
+Training Accuracy = 0.926666666667
+Validation Accuracy = 0.93
+Testing Accuracy = 0.928
+
+Task 14
+Training Accuracy = 0.96
+Validation Accuracy = 0.91
+Testing Accuracy = 0.868
+
+Task 15
+Training Accuracy = 0.544444444444
+Validation Accuracy = 0.61
+Testing Accuracy = 0.513
+
+Task 16
+Training Accuracy = 0.504444444444
+Validation Accuracy = 0.47
+Testing Accuracy = 0.486
+
+Task 17
+Training Accuracy = 0.681111111111
+Validation Accuracy = 0.62
+Testing Accuracy = 0.572
+
+Task 18
+Training Accuracy = 0.653333333333
+Validation Accuracy = 0.56
+Testing Accuracy = 0.662
+
+Task 19
+Training Accuracy = 0.117777777778
+Validation Accuracy = 0.08
+Testing Accuracy = 0.106
+
+Task 20
+Training Accuracy = 1.0
+Validation Accuracy = 0.99
+Testing Accuracy = 1.0
+
+-----------------------
+-----------------------
+Epoch 30
+Total Cost: 9027.13581207
+
+Task 1
+Training Accuracy = 0.987777777778
+Validation Accuracy = 0.98
+Testing Accuracy = 0.979
+
+Task 2
+Training Accuracy = 0.798888888889
+Validation Accuracy = 0.8
+Testing Accuracy = 0.651
+
+Task 3
+Training Accuracy = 0.693333333333
+Validation Accuracy = 0.54
+Testing Accuracy = 0.475
+
+Task 4
+Training Accuracy = 0.985555555556
+Validation Accuracy = 0.94
+Testing Accuracy = 0.954
+
+Task 5
+Training Accuracy = 0.941111111111
+Validation Accuracy = 0.88
+Testing Accuracy = 0.803
+
+Task 6
+Training Accuracy = 0.92
+Validation Accuracy = 0.95
+Testing Accuracy = 0.874
+
+Task 7
+Training Accuracy = 0.88
+Validation Accuracy = 0.89
+Testing Accuracy = 0.828
+
+Task 8
+Training Accuracy = 0.907777777778
+Validation Accuracy = 0.81
+Testing Accuracy = 0.844
+
+Task 9
+Training Accuracy = 0.887777777778
+Validation Accuracy = 0.91
+Testing Accuracy = 0.874
+
+Task 10
+Training Accuracy = 0.82
+Validation Accuracy = 0.73
+Testing Accuracy = 0.73
+
+Task 11
+Training Accuracy = 0.906666666667
+Validation Accuracy = 0.87
+Testing Accuracy = 0.908
+
+Task 12
+Training Accuracy = 0.977777777778
+Validation Accuracy = 0.96
+Testing Accuracy = 0.966
+
+Task 13
+Training Accuracy = 0.933333333333
+Validation Accuracy = 0.93
+Testing Accuracy = 0.925
+
+Task 14
+Training Accuracy = 0.994444444444
+Validation Accuracy = 0.93
+Testing Accuracy = 0.953
+
+Task 15
+Training Accuracy = 0.548888888889
+Validation Accuracy = 0.56
+Testing Accuracy = 0.48
+
+Task 16
+Training Accuracy = 0.493333333333
+Validation Accuracy = 0.55
+Testing Accuracy = 0.486
+
+Task 17
+Training Accuracy = 0.521111111111
+Validation Accuracy = 0.57
+Testing Accuracy = 0.482
+
+Task 18
+Training Accuracy = 0.821111111111
+Validation Accuracy = 0.82
+Testing Accuracy = 0.803
+
+Task 19
+Training Accuracy = 0.113333333333
+Validation Accuracy = 0.08
+Testing Accuracy = 0.091
+
+Task 20
+Training Accuracy = 1.0
+Validation Accuracy = 0.98
+Testing Accuracy = 0.997
+
+-----------------------
+-----------------------
+Epoch 40
+Total Cost: 7505.01319245
+
+Task 1
+Training Accuracy = 0.994444444444
+Validation Accuracy = 0.98
+Testing Accuracy = 0.99
+
+Task 2
+Training Accuracy = 0.903333333333
+Validation Accuracy = 0.77
+Testing Accuracy = 0.672
+
+Task 3
+Training Accuracy = 0.831111111111
+Validation Accuracy = 0.62
+Testing Accuracy = 0.528
+
+Task 4
+Training Accuracy = 1.0
+Validation Accuracy = 1.0
+Testing Accuracy = 0.995
+
+Task 5
+Training Accuracy = 0.953333333333
+Validation Accuracy = 0.88
+Testing Accuracy = 0.805
+
+Task 6
+Training Accuracy = 0.952222222222
+Validation Accuracy = 0.93
+Testing Accuracy = 0.892
+
+Task 7
+Training Accuracy = 0.906666666667
+Validation Accuracy = 0.87
+Testing Accuracy = 0.823
+
+Task 8
+Training Accuracy = 0.952222222222
+Validation Accuracy = 0.89
+Testing Accuracy = 0.868
+
+Task 9
+Training Accuracy = 0.942222222222
+Validation Accuracy = 0.93
+Testing Accuracy = 0.917
+
+Task 10
+Training Accuracy = 0.904444444444
+Validation Accuracy = 0.78
+Testing Accuracy = 0.827
+
+Task 11
+Training Accuracy = 0.907777777778
+Validation Accuracy = 0.87
+Testing Accuracy = 0.894
+
+Task 12
+Training Accuracy = 0.983333333333
+Validation Accuracy = 0.98
+Testing Accuracy = 0.976
+
+Task 13
+Training Accuracy = 0.926666666667
+Validation Accuracy = 0.91
+Testing Accuracy = 0.919
+
+Task 14
+Training Accuracy = 1.0
+Validation Accuracy = 0.94
+Testing Accuracy = 0.958
+
+Task 15
+Training Accuracy = 0.593333333333
+Validation Accuracy = 0.58
+Testing Accuracy = 0.517
+
+Task 16
+Training Accuracy = 0.518888888889
+Validation Accuracy = 0.49
+Testing Accuracy = 0.475
+
+Task 17
+Training Accuracy = 0.714444444444
+Validation Accuracy = 0.64
+Testing Accuracy = 0.579
+
+Task 18
+Training Accuracy = 0.918888888889
+Validation Accuracy = 0.91
+Testing Accuracy = 0.878
+
+Task 19
+Training Accuracy = 0.192222222222
+Validation Accuracy = 0.13
+Testing Accuracy = 0.095
+
+Task 20
+Training Accuracy = 0.998888888889
+Validation Accuracy = 0.98
+Testing Accuracy = 0.996
+
+-----------------------
+-----------------------
+Epoch 50
+Total Cost: 6704.11072898
+
+Task 1
+Training Accuracy = 0.998888888889
+Validation Accuracy = 1.0
+Testing Accuracy = 0.993
+
+Task 2
+Training Accuracy = 0.936666666667
+Validation Accuracy = 0.83
+Testing Accuracy = 0.677
+
+Task 3
+Training Accuracy = 0.878888888889
+Validation Accuracy = 0.64
+Testing Accuracy = 0.542
+
+Task 4
+Training Accuracy = 0.998888888889
+Validation Accuracy = 0.99
+Testing Accuracy = 0.995
+
+Task 5
+Training Accuracy = 0.958888888889
+Validation Accuracy = 0.87
+Testing Accuracy = 0.801
+
+Task 6
+Training Accuracy = 0.95
+Validation Accuracy = 0.94
+Testing Accuracy = 0.901
+
+Task 7
+Training Accuracy = 0.923333333333
+Validation Accuracy = 0.86
+Testing Accuracy = 0.82
+
+Task 8
+Training Accuracy = 0.965555555556
+Validation Accuracy = 0.9
+Testing Accuracy = 0.884
+
+Task 9
+Training Accuracy = 0.95
+Validation Accuracy = 0.94
+Testing Accuracy = 0.925
+
+Task 10
+Training Accuracy = 0.923333333333
+Validation Accuracy = 0.8
+Testing Accuracy = 0.831
+
+Task 11
+Training Accuracy = 0.915555555556
+Validation Accuracy = 0.85
+Testing Accuracy = 0.898
+
+Task 12
+Training Accuracy = 0.997777777778
+Validation Accuracy = 0.99
+Testing Accuracy = 0.984
+
+Task 13
+Training Accuracy = 0.935555555556
+Validation Accuracy = 0.92
+Testing Accuracy = 0.919
+
+Task 14
+Training Accuracy = 1.0
+Validation Accuracy = 0.95
+Testing Accuracy = 0.966
+
+Task 15
+Training Accuracy = 0.594444444444
+Validation Accuracy = 0.62
+Testing Accuracy = 0.523
+
+Task 16
+Training Accuracy = 0.507777777778
+Validation Accuracy = 0.51
+Testing Accuracy = 0.477
+
+Task 17
+Training Accuracy = 0.747777777778
+Validation Accuracy = 0.63
+Testing Accuracy = 0.586
+
+Task 18
+Training Accuracy = 0.918888888889
+Validation Accuracy = 0.91
+Testing Accuracy = 0.892
+
+Task 19
+Training Accuracy = 0.212222222222
+Validation Accuracy = 0.11
+Testing Accuracy = 0.088
+
+Task 20
+Training Accuracy = 0.998888888889
+Validation Accuracy = 0.98
+Testing Accuracy = 0.994
+
+-----------------------
+-----------------------
+Epoch 60
+Total Cost: 6511.44859343
+
+Task 1
+Training Accuracy = 1.0
+Validation Accuracy = 0.99
+Testing Accuracy = 0.996
+
+Task 2
+Training Accuracy = 0.935555555556
+Validation Accuracy = 0.83
+Testing Accuracy = 0.659
+
+Task 3
+Training Accuracy = 0.872222222222
+Validation Accuracy = 0.62
+Testing Accuracy = 0.554
+
+Task 4
+Training Accuracy = 0.997777777778
+Validation Accuracy = 0.99
+Testing Accuracy = 0.994
+
+Task 5
+Training Accuracy = 0.963333333333
+Validation Accuracy = 0.88
+Testing Accuracy = 0.8
+
+Task 6
+Training Accuracy = 0.951111111111
+Validation Accuracy = 0.93
+Testing Accuracy = 0.891
+
+Task 7
+Training Accuracy = 0.921111111111
+Validation Accuracy = 0.89
+Testing Accuracy = 0.832
+
+Task 8
+Training Accuracy = 0.972222222222
+Validation Accuracy = 0.89
+Testing Accuracy = 0.87
+
+Task 9
+Training Accuracy = 0.947777777778
+Validation Accuracy = 0.95
+Testing Accuracy = 0.917
+
+Task 10
+Training Accuracy = 0.901111111111
+Validation Accuracy = 0.76
+Testing Accuracy = 0.796
+
+Task 11
+Training Accuracy = 0.922222222222
+Validation Accuracy = 0.85
+Testing Accuracy = 0.898
+
+Task 12
+Training Accuracy = 0.994444444444
+Validation Accuracy = 0.98
+Testing Accuracy = 0.985
+
+Task 13
+Training Accuracy = 0.937777777778
+Validation Accuracy = 0.92
+Testing Accuracy = 0.918
+
+Task 14
+Training Accuracy = 1.0
+Validation Accuracy = 0.97
+Testing Accuracy = 0.956
+
+Task 15
+Training Accuracy = 0.585555555556
+Validation Accuracy = 0.61
+Testing Accuracy = 0.52
+
+Task 16
+Training Accuracy = 0.507777777778
+Validation Accuracy = 0.49
+Testing Accuracy = 0.484
+
+Task 17
+Training Accuracy = 0.768888888889
+Validation Accuracy = 0.72
+Testing Accuracy = 0.54
+
+Task 18
+Training Accuracy = 0.922222222222
+Validation Accuracy = 0.91
+Testing Accuracy = 0.877
+
+Task 19
+Training Accuracy = 0.197777777778
+Validation Accuracy = 0.13
+Testing Accuracy = 0.094
+
+Task 20
+Training Accuracy = 0.998888888889
+Validation Accuracy = 0.98
+Testing Accuracy = 0.994
+
+-----------------------
+Writing final results to scores.csv

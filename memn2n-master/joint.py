@@ -65,7 +65,7 @@ valQ = []
 trainA = []
 valA = []
 for task in train:
-    S, Q, A = vectorize_data(task, word_idx, sentence_size, memory_size, True)
+    S, Q, A = vectorize_data(task, word_idx, sentence_size, memory_size, False)
     ts, vs, tq, vq, ta, va = cross_validation.train_test_split(S, Q, A, test_size=0.1, random_state=FLAGS.random_state)
     trainS.append(ts)
     trainQ.append(tq)
@@ -81,7 +81,7 @@ valS = reduce(lambda a,b : np.vstack((a,b)), (x for x in valS))
 valQ = reduce(lambda a,b : np.vstack((a,b)), (x for x in valQ))
 valA = reduce(lambda a,b : np.vstack((a,b)), (x for x in valA))
 
-testS, testQ, testA = vectorize_data(list(chain.from_iterable(test)), word_idx, sentence_size, memory_size, True)
+testS, testQ, testA = vectorize_data(list(chain.from_iterable(test)), word_idx, sentence_size, memory_size, False)
 
 n_train = trainS.shape[0]
 n_val = valS.shape[0]

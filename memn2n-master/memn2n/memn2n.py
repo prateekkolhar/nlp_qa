@@ -201,7 +201,7 @@ class MemN2N(object):
                 else:
                     with tf.variable_scope('hop_{}'.format(hopn - 1)):
                         # layerwise
-                        m_emb_A = tf.nn.embedding_lookup(self.C, stories)
+                        m_emb_A = tf.nn.embedding_lookup(self.A_1, stories)
                         # adjacent
                         # m_emb_A = tf.nn.embedding_lookup(self.C[hopn - 1], stories)
                         m_A = tf.reduce_sum(m_emb_A * self._encoding, 2)

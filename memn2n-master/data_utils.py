@@ -182,4 +182,3 @@ def jaccard(a, b):
     Assumes that a and b are sets so that calling code only has to cast the question to set once.
     '''
     return len(a.intersection(b)) / float(len(a.union(b)))
-    set(a).intersection(set(b))
