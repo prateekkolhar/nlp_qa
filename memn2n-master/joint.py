@@ -3,7 +3,7 @@ Download tasks from facebook.ai/babi """
 from __future__ import absolute_import
 from __future__ import print_function
 
-from data_utils import load_task, vectorize_data
+from data_utils import *
 from sklearn import cross_validation, metrics
 from memn2n import MemN2N
 from itertools import chain
@@ -21,7 +21,7 @@ tf.flags.DEFINE_integer("evaluation_interval", 10, "Evaluate and print results e
 tf.flags.DEFINE_integer("batch_size", 32, "Batch size for training.")
 tf.flags.DEFINE_integer("hops", 3, "Number of hops in the Memory Network.")
 tf.flags.DEFINE_integer("epochs", 60, "Number of epochs to train for.")
-tf.flags.DEFINE_integer("embedding_size", 40, "Embedding size for embedding matrices.")
+tf.flags.DEFINE_integer("embedding_size", 300, "Embedding size for embedding matrices.")
 tf.flags.DEFINE_integer("memory_size", 50, "Maximum size of memory.")
 tf.flags.DEFINE_integer("random_state", None, "Random state.")
 tf.flags.DEFINE_string("data_dir", "data/tasks_1-20_v1-2/en/", "Directory containing bAbI tasks")
@@ -47,9 +47,11 @@ memory_size = min(FLAGS.memory_size, max_story_size)
 
 # Add time words/indexes
 for i in range(memory_size):
+    vocab.append('time{}'.format(i + 1))
     word_idx['time{}'.format(i+1)] = 'time{}'.format(i+1)
 
 vocab_size = len(word_idx) + 1 # +1 for nil word
+embeddings = read_word_embeddings("data/glove.6B.300d-relativized.txt", vocab) # dimension = vocab_size
 sentence_size = max(query_size, sentence_size) # for the position
 sentence_size += 1  # +1 for time words
 
@@ -109,6 +111,7 @@ batches = [(start, end) for start,end in batches]
 with tf.Session() as sess:
     model = MemN2N(batch_size, vocab_size, sentence_size, memory_size, FLAGS.embedding_size, session=sess,
                    hops=FLAGS.hops, max_grad_norm=FLAGS.max_grad_norm)
+    model.init_embeddings(embeddings)
     for i in range(1, FLAGS.epochs+1):
         # Stepped learning rate
         if i - 1 <= FLAGS.anneal_stop_epoch:

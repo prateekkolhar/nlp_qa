@@ -124,7 +124,7 @@ def get_stories(f, only_supporting=False):
 #     return np.array(S), np.array(Q), np.array(A)
 
 
-def vectorize_data(data, word_idx, sentence_size, memory_size,  filter=False):
+def vectorize_data(data, word_idx, sentence_size, memory_size, filter=False):
     """
     Vectorize stories and queries.
     If a sentence length < sentence_size, the sentence will be padded with 0's.
@@ -183,3 +183,95 @@ def jaccard(a, b):
     '''
     return len(a.intersection(b)) / float(len(a.union(b)))
     set(a).intersection(set(b))
+
+
+def read_word_embeddings(embeddings_file, vocab):
+    f = open(embeddings_file)
+    word_indexer = Indexer()
+    vectors = []
+    # Add an UNK token at the beginning
+    for line in f:
+        if line.strip() != "":
+            space_idx = line.find(' ')
+            word = line[:space_idx]
+            numbers = line[space_idx+1:]
+            float_numbers = [float(number_str) for number_str in numbers.split()]
+            #print repr(float_numbers)
+            vector = np.array(float_numbers)
+            word_indexer.get_index(word)
+            vectors.append(vector)
+            #print repr(word) + " : " + repr(vector)
+    f.close()
+    print "Read in " + repr(len(word_indexer)) + " vectors of size " + repr(vectors[0].shape[0])
+    word_indexer.get_index("UNK")
+    vectors.append(np.zeros(vectors[0].shape[0]))
+    embedding = WordEmbeddings(word_indexer, np.array(vectors))
+    # Turn vectors into a 2-D numpy array
+    wi = Indexer()
+    vec = []
+    vec.append(np.zeros(vectors[0].shape[0]))
+    for i, c in enumerate(vocab):
+        vec.append(embedding.get_embedding(c))
+    return vec
+
+class Indexer(object):
+    def __init__(self):
+        self.objs_to_ints = {}
+        self.ints_to_objs = {}
+
+    def __repr__(self):
+        return str([str(self.get_object(i)) for i in xrange(0, len(self))])
+
+    def __len__(self):
+        return len(self.objs_to_ints)
+
+    def get_object(self, index):
+        if (index not in self.ints_to_objs):
+            return None
+        else:
+            return self.ints_to_objs[index]
+
+    def contains(self, object):
+        return self.index_of(object) != -1
+
+    # Returns -1 if the object isn't present, index otherwise
+    def index_of(self, object):
+        if (object not in self.objs_to_ints):
+            return -1
+        else:
+            return self.objs_to_ints[object]
+
+    def index_of_unk(self, object):
+        if (object not in self.objs_to_ints):
+            return self.objs_to_ints["UNK"]
+        else:
+            return self.objs_to_ints[object]
+
+    # Adds the object to the index if it isn't present, always returns a nonnegative index
+    def get_index(self, object, add=True):
+        if not add:
+            return self.index_of(object)
+        if (object not in self.objs_to_ints):
+            new_idx = len(self.objs_to_ints)
+            self.objs_to_ints[object] = new_idx
+            self.ints_to_objs[new_idx] = object
+        return self.objs_to_ints[object]
+
+class WordEmbeddings:
+    def __init__(self, word_indexer, vectors):
+        self.word_indexer = word_indexer
+        self.vectors = vectors
+
+    def get_embedding(self, word):
+        word_idx = self.word_indexer.index_of(word)
+        if word_idx != -1:
+            return self.vectors[word_idx]
+        else:
+            return self.vectors[self.word_indexer.get_index("UNK")]
+
+    def get_embedding_by_index(self, word_idx):
+        word_idx = int(word_idx)
+        if word_idx != -1:
+            return self.vectors[word_idx]
+        else:
+            return self.vectors[self.word_indexer.get_index("UNK")]

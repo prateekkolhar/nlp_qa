@@ -163,8 +163,11 @@ class MemN2N(object):
             nil_word_slot = tf.zeros([1, self._embedding_size])
             A = tf.concat(axis=0, values=[ nil_word_slot, self._init([self._vocab_size-1, self._embedding_size]) ])
             C = tf.concat(axis=0, values=[ nil_word_slot, self._init([self._vocab_size-1, self._embedding_size]) ])
-
             self.A_1 = tf.Variable(A, name="A")
+            self.embedding_placeholder = tf.placeholder(tf.float32, [self._vocab_size, self._embedding_size])
+            self.embedding_init = self.A_1.assign(self.embedding_placeholder)
+
+            # self.A_1 = tf.Variable(A, name="A")
 
             self.C = []
 
@@ -186,6 +189,7 @@ class MemN2N(object):
             q_emb = tf.nn.embedding_lookup(self.A_1, queries)
             u_0 = tf.reduce_sum(q_emb * self._encoding, 1)
             u = [u_0]
+            # cnct_u = u_0
 
             for hopn in range(self._hops):
                 if hopn == 0:
@@ -222,9 +226,13 @@ class MemN2N(object):
                     u_k = nonlin(u_k)
 
                 u.append(u_k)
+                # cnct_u = tf.concat([cnct_u, u_k], 0)
 
             # Use last C for output (transposed)
             with tf.variable_scope('hop_{}'.format(self._hops)):
+                # print ".." + str(cnct_u.shape)
+                print ",," + str((self.C[-1]).shape)
+
                 return tf.matmul(u_k, tf.transpose(self.C[-1], [1,0]))
 
     def batch_fit(self, stories, queries, answers, learning_rate):
@@ -279,3 +287,15 @@ class MemN2N(object):
         """
         feed_dict = {self._stories: stories, self._queries: queries}
         return self._sess.run(self.predict_log_proba_op, feed_dict=feed_dict)
+
+    def init_embeddings(self, embeddings):
+        """Predicts log probabilities of answers.
+
+        Args:
+            stories: Tensor (None, memory_size, sentence_size)
+            queries: Tensor (None, sentence_size)
+        Returns:
+            answers: Tensor (None, vocab_size)
+        """
+        feed_dict = {self.embedding_placeholder: embeddings}
+        return self._sess.run(self.embedding_init, feed_dict=feed_dict)

@@ -3,7 +3,7 @@ Download tasks from facebook.ai/babi """
 from __future__ import absolute_import
 from __future__ import print_function
 
-from data_utils import load_task, vectorize_data
+from data_utils import *
 from sklearn import cross_validation, metrics
 from memn2n import MemN2N
 from itertools import chain
@@ -20,7 +20,7 @@ tf.flags.DEFINE_integer("evaluation_interval", 10, "Evaluate and print results e
 tf.flags.DEFINE_integer("batch_size", 32, "Batch size for training.")
 tf.flags.DEFINE_integer("hops", 3, "Number of hops in the Memory Network.")
 tf.flags.DEFINE_integer("epochs", 100, "Number of epochs to train for.")
-tf.flags.DEFINE_integer("embedding_size", 20, "Embedding size for embedding matrices.")
+tf.flags.DEFINE_integer("embedding_size", 300, "Embedding size for embedding matrices.")
 tf.flags.DEFINE_integer("memory_size", 50, "Maximum size of memory.")
 tf.flags.DEFINE_integer("task_id", 1, "bAbI task id, 1 <= id <= 20")
 tf.flags.DEFINE_integer("random_state", None, "Random state.")
@@ -34,7 +34,7 @@ train, test = load_task(FLAGS.data_dir, FLAGS.task_id)
 data = train + test
 
 vocab = sorted(reduce(lambda x, y: x | y, (set(list(chain.from_iterable(s)) + q + a) for s, q, a in data)))
-word_idx = dict((c, i + 1) for i, c in enumerate(vocab))
+word_idx = dict((c, (i + 1)) for i, c in enumerate(vocab))
 
 max_story_size = max(map(len, (s for s, _, _ in data)))
 mean_story_size = int(np.mean([ len(s) for s, _, _ in data ]))
@@ -44,9 +44,11 @@ memory_size = min(FLAGS.memory_size, max_story_size)
 
 # Add time words/indexes
 for i in range(memory_size):
+    vocab.append('time{}'.format(i+1))
     word_idx['time{}'.format(i+1)] = 'time{}'.format(i+1)
 
-vocab_size = len(word_idx) + 1 # +1 for nil word
+vocab_size = len(word_idx) + 1
+embeddings = read_word_embeddings("data/glove.6B.300d-relativized.txt", vocab) # dimension = vocab_size
 sentence_size = max(query_size, sentence_size) # for the position
 sentence_size += 1  # +1 for time words
 
@@ -82,9 +84,12 @@ batch_size = FLAGS.batch_size
 batches = zip(range(0, n_train-batch_size, batch_size), range(batch_size, n_train, batch_size))
 batches = [(start, end) for start, end in batches]
 
+
 with tf.Session() as sess:
+
     model = MemN2N(batch_size, vocab_size, sentence_size, memory_size, FLAGS.embedding_size, session=sess,
                    hops=FLAGS.hops, max_grad_norm=FLAGS.max_grad_norm)
+    model.init_embeddings(embeddings)
     for t in range(1, FLAGS.epochs+1):
         # Stepped learning rate
         if t - 1 <= FLAGS.anneal_stop_epoch:
